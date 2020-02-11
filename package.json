@@ -1,7 +1,7 @@
 {
   "name": "ual-anchor-demo",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://greymass.github.io/ual-anchor-demo",
   "license": "MIT",
   "author": {
     "name": "Greymass",
@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "anchor-link-browser-transport": "^0.1.1",
+    "gh-pages": "^2.2.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "ual-anchor": "^0.1.1",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && ln -s index.html build/404.html && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
