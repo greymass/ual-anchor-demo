@@ -169,12 +169,25 @@ class TestApp extends Component {
 }
 
 class UALWrapper extends Component {
-  state = { chainId: chains[0].chainId }
+  constructor(props) {
+    super(props)
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const chainId = params.get('chain');
+    this.state = {
+      chainId: chainId || chains[0].chainId
+    }
+  }
   setChain = (event) => this.setState({ chainId: event.target.value })
   render () {
     const { chainId } = this.state
     const { available } = this.props
     const [ chain ] = available.filter((c) => c.chainId === chainId)
+    if (!chain) {
+      return (
+        <div>Invalid Chain ID</div>
+      )
+    }
     const anchor = new Anchor([chain], { appName: 'ual-anchor-demo' })
     return (
       <div style={styles.container}>
