@@ -46,12 +46,12 @@ const chains = [{
   }]
 }];
 
-const getTransaction = (account, chainId) => {
+const getTransaction = (account, requestPermission, chainId) => {
   return {
     actions: [{
       account: 'eosio.token',
       name: 'transfer',
-      authorization: [{ actor: account, permission: 'active' }],
+      authorization: [{ actor: account, permission: requestPermission }],
       data: {
         from: account,
         to: 'teamgreymass',
@@ -105,8 +105,9 @@ class TestApp extends Component {
   purchase = async () => {
     const { ual: { activeUser } } = this.props
     try {
-      const accountName = await activeUser.getAccountName()
-      const demoTransaction = getTransaction(accountName, await activeUser.getChainId())
+      const { accountName, chain, requestPermission } = activeUser
+      const { chainId } = chain
+      const demoTransaction = getTransaction(accountName, requestPermission, chainId)
       const result = await activeUser.signTransaction(demoTransaction, { expireSeconds: 120, blocksBehind: 3 })
       this.setState({
         message: `Transfer Successful!`,
