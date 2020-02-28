@@ -130,6 +130,9 @@ class TestApp extends Component {
           </div>
         )
       }
+      <button type='button' onClick={this.purchase} style={{ ...styles.button, ...styles.blueBG }}>
+        <p style={styles.baseText}>{`Transfer 0.0001`}</p>
+      </button>
       <table>
         <tbody>
           <tr>
@@ -146,10 +149,6 @@ class TestApp extends Component {
           </tr>
         </tbody>
       </table>
-      <p>Actions:</p>
-      <button type='button' onClick={this.purchase} style={{ ...styles.button, ...styles.blueBG }}>
-        <p style={styles.baseText}>{`Transfer 0.0001`}</p>
-      </button>
       <button type='button' onClick={this.props.ual.logout} style={styles.logout}>
         <p>Logout</p>
       </button>
@@ -225,8 +224,9 @@ const styles = {
     display: 'flex',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'top',
     height: '100vh',
+    marginTop: '10vh',
     flexDirection: 'column',
   },
   button: {
@@ -237,6 +237,7 @@ const styles = {
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: '2em',
   },
   select: {
     textAlign: 'center',
