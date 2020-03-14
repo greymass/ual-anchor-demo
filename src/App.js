@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { Anchor } from 'ual-anchor'
+import { Scatter } from 'ual-scatter'
 import { UALProvider, withUAL } from 'ual-reactjs-renderer'
 
 const chains = [{
@@ -189,6 +190,7 @@ class UALWrapper extends Component {
       )
     }
     const anchor = new Anchor([chain], { appName: 'ual-anchor-demo' })
+    const scatter = new Scatter([chain], { appName: 'ual-anchor-demo' })
     return (
       <div style={styles.container}>
         <p>
@@ -209,7 +211,7 @@ class UALWrapper extends Component {
         </p>
         <UALProvider
           appName='Anchor + Authenticator Test App'
-          authenticators={[anchor]}
+          authenticators={[anchor, scatter]}
           chains={[chain]}
           key={chain.chainId}
         >
