@@ -75,7 +75,7 @@ const getTransaction = (actor, permission, chainId) => {
         payee_public_key: 'FIO6smr7ThQMWYBHzEvkzTZdxNNmUwxqh2VXdXZdDdzYHgakgqCeb',
         amount: getTransactionAmount(chainId),
         max_fee: 2000000000,
-        actor: account,
+        actor,
         tpid: null,
       }
     }
