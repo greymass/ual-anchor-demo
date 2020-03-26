@@ -7,6 +7,14 @@ import { Scatter } from 'ual-scatter'
 import { UALProvider, withUAL } from 'ual-reactjs-renderer'
 
 const chains = [{
+  chainId: 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e',
+  name: 'FIO (Testnet)',
+  rpcEndpoints: [{
+    protocol: 'https',
+    host: 'fiotestnet.greymass.com',
+    port: 443,
+  }]
+},{
   chainId: 'e70aaab8997e1dfce58fbfac80cbbb8fecec7b99cf982a9444273cbc64c41473',
   name: 'Jungle 2 (Testnet)',
   rpcEndpoints: [{
@@ -48,18 +56,36 @@ const chains = [{
   }]
 }];
 
-const getTransaction = (account, requestPermission, chainId) => {
+const getTransaction = (actor, permission, chainId) => {
+  // default contract/action
+  let account = 'eosio.token';
+  let name = 'transfer';
+  // default data
+  let data = {
+    from: actor,
+    to: 'teamgreymass',
+    quantity: getTransactionAmount(chainId),
+    memo: 'ual-anchor-demo'
+  }
+  switch (chainId) {
+    case 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e': {
+      account = 'fio.token'
+      name = 'trnsfiopubky'
+      data = {
+        payee_public_key: 'FIO6smr7ThQMWYBHzEvkzTZdxNNmUwxqh2VXdXZdDdzYHgakgqCeb',
+        amount: getTransactionAmount(chainId),
+        max_fee: 2000000000,
+        actor: account,
+        tpid: null,
+      }
+    }
+  }
   return {
     actions: [{
-      account: 'eosio.token',
-      name: 'transfer',
-      authorization: [{ actor: account, permission: requestPermission }],
-      data: {
-        from: account,
-        to: 'teamgreymass',
-        quantity: getTransactionAmount(chainId),
-        memo: 'ual-anchor-demo'
-      },
+      account,
+      name,
+      authorization: [{ actor, permission }],
+      data,
     }],
   }
 }
@@ -81,6 +107,9 @@ const getTransactionAmount = (chainId) => {
       symbol = 'WAX'
       quantity = '0.00000001'
       break
+    }
+    case 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e': {
+      return parseInt(0.00000001, 10)
     }
   }
   return `${quantity} ${symbol}`
