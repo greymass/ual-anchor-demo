@@ -1,6 +1,6 @@
 {
   "name": "ual-anchor-demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://greymass.github.io/ual-anchor-demo",
   "license": "MIT",
   "author": {
@@ -14,7 +14,7 @@
     "gh-pages": "^2.2.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "ual-anchor": "^0.2.3",
+    "ual-anchor": "^0.2.4",
     "ual-ledger": "^0.2.0",
     "ual-reactjs-renderer": "^0.2.0",
     "ual-scatter": "^0.2.0"
