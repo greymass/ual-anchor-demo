@@ -2019,26 +2019,25 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-anchor-link-browser-transport@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/anchor-link-browser-transport/-/anchor-link-browser-transport-0.2.2.tgz#49e4450c0b9417c0357c19894ae7a547db036833"
-  integrity sha512-m4v5o8FpglvXV2sSzXSUajhvtfl3bY2PRlIvMlb2lBLilTaIHkCYbf8xV/pflHjlsYAcEEDp3df+QIfP/1oLsA==
+anchor-link-browser-transport@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/anchor-link-browser-transport/-/anchor-link-browser-transport-1.0.0.tgz#829427588caf8dd25b4d3a7bbb509d980586dd08"
+  integrity sha512-3y6hyw2bJ43VdkdhIMJ3diYwCOfUTCgMQJ5fZw3sUDGSgbwgAa7PIswxd+okulMMP8HgO8OrqjZufkXChOX/8w==
   dependencies:
     qrcode "^1.4.4"
 
-anchor-link@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/anchor-link/-/anchor-link-0.4.0.tgz#a755d3c439dbfa813470d907ec7c80994a7ca28b"
-  integrity sha512-31t20Q8a4xc2L6W5TDKHT3u2MDmggZaIohdVXt3YJtS/zO2aacpkqfDuKxBB/UrpDeLknwA37IXKOYIGSvE6BA==
+anchor-link@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/anchor-link/-/anchor-link-1.0.0.tgz#53c6bdb9d0ac98819ef26aaa363cb9e4770d6ded"
+  integrity sha512-AHX1BtVk6BIeKyFvbQHiv5DbS3SNvS4Wy5j7dxgqStC6HDxv6XlhAiFPFeVV7D7vbwQXAUrJ506BK+AjwxTdbw==
   dependencies:
     eosio-signing-request "^1.1.1"
     eosjs "^20.0.0"
     eosjs-ecc "^4.0.7"
     fetch-ponyfill "^6.1.0"
     pako "^1.0.10"
-    qrcode-terminal "^0.12.0"
-    uuid "^7.0.2"
-    ws "^7.2.2"
+    uuid "^7.0.3"
+    ws "^7.2.3"
 
 ansi-colors@^3.0.0:
   version "3.2.4"
@@ -8742,11 +8741,6 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
-qrcode-terminal@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/qrcode-terminal/-/qrcode-terminal-0.12.0.tgz#bb5b699ef7f9f0505092a3748be4464fe71b5819"
-  integrity sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==
-
 qrcode@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/qrcode/-/qrcode-1.4.4.tgz#f0c43568a7e7510a55efc3b88d9602f71963ea83"
@@ -10493,13 +10487,13 @@ u2f-api@0.2.7:
   resolved "https://registry.yarnpkg.com/u2f-api/-/u2f-api-0.2.7.tgz#17bf196b242f6bf72353d9858e6a7566cc192720"
   integrity sha512-fqLNg8vpvLOD5J/z4B6wpPg4Lvowz1nJ9xdHcCzdUPKcFE/qNCceV2gNZxSJd5vhAZemHr/K/hbzVA0zxB5mkg==
 
-ual-anchor@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/ual-anchor/-/ual-anchor-0.2.5.tgz#8b02cda8600ecc9846313185e78bf1e45ebd8b43"
-  integrity sha512-9BW/xQ+K7crSX1hZ30uGMdM/+rw90ov/sED6S8Zq8varZcRG5gtwEoIbBeXF2y2h5MfBm4JfaRxqMamXAJU4Zg==
+ual-anchor@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ual-anchor/-/ual-anchor-0.3.0.tgz#09cf2fb08f47ffc7a92c22e27f64c547709c8240"
+  integrity sha512-gLZ1IJoH3CwwENp6kAC2S/UqIlM9PoUl02Na8iKLBh38Gz41116jFO+r4FNvIVOzOVYs70yfutafYaM2bTQnLA==
   dependencies:
-    anchor-link "^0.4.0"
-    anchor-link-browser-transport "^0.2.2"
+    anchor-link "^1.0.0"
+    anchor-link-browser-transport "^1.0.0"
     elliptic "6.5.2"
     eosjs "^20.0.3"
     universal-authenticator-library "0.2.0"
@@ -10747,10 +10741,10 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-uuid@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
-  integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
+uuid@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
@@ -11201,7 +11195,7 @@ ws@^6.1.0, ws@^6.1.2:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7.2.2:
+ws@^7.2.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.2.3.tgz#a5411e1fb04d5ed0efee76d26d5c46d830c39b46"
   integrity sha512-HTDl9G9hbkNDk98naoR/cHDws7+EyYMOdL1BmjsZXRUjf7d+MficC4B7HLUPlSiho0vg+CWKrGIt/VJBd1xunQ==
