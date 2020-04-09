@@ -14,7 +14,7 @@
     "gh-pages": "^2.2.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "ual-anchor": "^0.3.0",
+    "ual-anchor": "^0.3.1",
     "ual-ledger": "^0.2.0",
     "ual-reactjs-renderer": "^0.2.0",
     "ual-scatter": "^0.2.0"
