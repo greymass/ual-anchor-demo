@@ -7,6 +7,14 @@ import { Scatter } from 'ual-scatter'
 import { UALProvider, withUAL } from 'ual-reactjs-renderer'
 
 const chains = [{
+  chainId: '0db13ab9b321c37c0ba8481cb4681c2788b622c3abfd1f12f0e5353d44ba6e72',
+  name: 'Block.one Testnet',
+  rpcEndpoints: [{
+    protocol: 'https',
+    host: 'api.testnet.eos.io',
+    port: 443,
+  }]
+},{
   chainId: 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e',
   name: 'FIO (Testnet)',
   rpcEndpoints: [{
@@ -68,6 +76,15 @@ const getTransaction = (actor, permission, chainId) => {
     memo: 'ual-anchor-demo'
   }
   switch (chainId) {
+    case '0db13ab9b321c37c0ba8481cb4681c2788b622c3abfd1f12f0e5353d44ba6e72': {
+      data = {
+        from: actor,
+        to: 'csxdbqrkklmm',
+        quantity: getTransactionAmount(chainId),
+        memo: 'ual-anchor-demo'
+      }
+      break;
+    }
     case 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e': {
       account = 'fio.token'
       name = 'trnsfiopubky'
@@ -78,6 +95,7 @@ const getTransaction = (actor, permission, chainId) => {
         actor,
         tpid: null,
       }
+      break;
     }
   }
   return {
@@ -94,6 +112,10 @@ const getTransactionAmount = (chainId) => {
   let symbol = 'EOS'
   let quantity = '0.0001'
   switch (chainId) {
+    case '0db13ab9b321c37c0ba8481cb4681c2788b622c3abfd1f12f0e5353d44ba6e72': {
+      symbol = 'TNT'
+      break;
+    }
     case 'f11d5128e07177823924a07df63bf59fbd07e52c44bc77d16acc1c6e9d22d37b': {
       symbol = 'LNX'
       quantity = '0.00000001'
