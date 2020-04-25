@@ -2019,22 +2019,23 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
-anchor-link-browser-transport@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/anchor-link-browser-transport/-/anchor-link-browser-transport-1.0.0.tgz#829427588caf8dd25b4d3a7bbb509d980586dd08"
-  integrity sha512-3y6hyw2bJ43VdkdhIMJ3diYwCOfUTCgMQJ5fZw3sUDGSgbwgAa7PIswxd+okulMMP8HgO8OrqjZufkXChOX/8w==
+anchor-link-browser-transport@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/anchor-link-browser-transport/-/anchor-link-browser-transport-1.0.2.tgz#9f69df1f2ef827ba05fde7e6392511931fcb725c"
+  integrity sha512-IJ4eKQv77G/5PV4ahTbGWdO6VlgjmobX36xQ8MYnOVPOrb0BHEonY/N8EaObY5VUHpr0STaNyCLbRr9gePhXow==
   dependencies:
     qrcode "^1.4.4"
 
-anchor-link@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/anchor-link/-/anchor-link-1.0.0.tgz#53c6bdb9d0ac98819ef26aaa363cb9e4770d6ded"
-  integrity sha512-AHX1BtVk6BIeKyFvbQHiv5DbS3SNvS4Wy5j7dxgqStC6HDxv6XlhAiFPFeVV7D7vbwQXAUrJ506BK+AjwxTdbw==
+anchor-link@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/anchor-link/-/anchor-link-1.0.3.tgz#e781b7bcd4c0ba449a128e1f2cd0c256df45fc4c"
+  integrity sha512-65Nl7jgBsHig6Hxki2vsajYlBZB7qS2ArbvpDMG97FHeJV+CcZ6JLrypbGiiFIAg0zUihLfaGWrJX8bZ5/9vqg==
   dependencies:
     eosio-signing-request "^1.1.1"
     eosjs "^20.0.0"
     eosjs-ecc "^4.0.7"
     fetch-ponyfill "^6.1.0"
+    isomorphic-ws "^4.0.1"
     pako "^1.0.10"
     uuid "^7.0.3"
     ws "^7.2.3"
@@ -10487,13 +10488,13 @@ u2f-api@0.2.7:
   resolved "https://registry.yarnpkg.com/u2f-api/-/u2f-api-0.2.7.tgz#17bf196b242f6bf72353d9858e6a7566cc192720"
   integrity sha512-fqLNg8vpvLOD5J/z4B6wpPg4Lvowz1nJ9xdHcCzdUPKcFE/qNCceV2gNZxSJd5vhAZemHr/K/hbzVA0zxB5mkg==
 
-ual-anchor@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/ual-anchor/-/ual-anchor-0.3.0.tgz#09cf2fb08f47ffc7a92c22e27f64c547709c8240"
-  integrity sha512-gLZ1IJoH3CwwENp6kAC2S/UqIlM9PoUl02Na8iKLBh38Gz41116jFO+r4FNvIVOzOVYs70yfutafYaM2bTQnLA==
+ual-anchor@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/ual-anchor/-/ual-anchor-0.3.2.tgz#6f475c8aef676fe2b12b92ae1153b2708c5ed154"
+  integrity sha512-J6j0ot7fZW9WfM3sbBkkx50GRQQWRtBcdT0QJ7Egq7eTXgYo2FBmH4645yR7X1/3S2Pf/VkPaeBJffKNvnu84g==
   dependencies:
-    anchor-link "^1.0.0"
-    anchor-link-browser-transport "^1.0.0"
+    anchor-link "^1.0.3"
+    anchor-link-browser-transport "^1.0.2"
     elliptic "6.5.2"
     eosjs "^20.0.3"
     universal-authenticator-library "0.2.0"
