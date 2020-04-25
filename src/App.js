@@ -241,7 +241,12 @@ class UALWrapper extends Component {
         <div>Invalid Chain ID</div>
       )
     }
-    const anchor = new Anchor([chain], { appName: 'ual-anchor-demo' })
+    const anchor = new Anchor([chain], {
+      // Required: The name of the app requesting a session
+      appName: 'ual-anchor-demo',
+      // Optional: define API for session management, defaults to cb.anchor.link
+      service: 'https://cb.anchor.link'
+    })
     const ledger = new Ledger([chain])
     const scatter = new Scatter([chain], { appName: 'ual-anchor-demo' })
     return (
