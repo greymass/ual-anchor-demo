@@ -62,12 +62,9 @@ const chains = [{
     host: 'waxtestnet.greymass.com',
     port: 443,
   }]
-}];
+}]
 
-const getTransaction = (actor, permission, chainId) => {
-  // default contract/action
-  let account = 'eosio.token';
-  let name = 'transfer';
+const getActionData = (actor, permission, chainId) => {
   // default data
   let data = {
     from: actor,
@@ -83,11 +80,9 @@ const getTransaction = (actor, permission, chainId) => {
         quantity: getTransactionAmount(chainId),
         memo: 'ual-anchor-demo'
       }
-      break;
+      break
     }
     case 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e': {
-      account = 'fio.token'
-      name = 'trnsfiopubky'
       data = {
         payee_public_key: 'FIO6smr7ThQMWYBHzEvkzTZdxNNmUwxqh2VXdXZdDdzYHgakgqCeb',
         amount: getTransactionAmount(chainId),
@@ -95,16 +90,66 @@ const getTransaction = (actor, permission, chainId) => {
         actor,
         tpid: null,
       }
-      break;
+      break
     }
   }
+  return data
+}
+
+const getContractData = (chainId) => {
+  // default contract/action
+  let account = 'eosio.token'
+  let name = 'transfer'
+  switch (chainId) {
+    case 'b20901380af44ef59c5918439a1f9a41d83669020319a80574b804a5f95cbd7e': {
+      account = 'fio.token'
+      name = 'trnsfiopubky'
+      break
+    }
+  }
+  return { account, name }
+}
+
+const getActions = (actor, permission, chainId) => {
+  const { account, name } = getContractData(chainId)
+  const data = getActionData(actor, permission, chainId)
   return {
-    actions: [{
-      account,
-      name,
-      authorization: [{ actor, permission }],
-      data,
-    }],
+    actions: [
+      {
+        account,
+        name,
+        authorization: [{ actor, permission }],
+        data,
+      }
+    ],
+  }
+}
+
+const getTransaction = async (activeUser, actor, permission, chainId) => {
+  const { account, name } = getContractData(chainId)
+  const data = getActionData(actor, permission, chainId)
+  const actions = [{
+    account,
+    name,
+    authorization: [{ actor, permission }],
+    data,
+  }]
+  const info = await activeUser.rpc.get_info()
+  const height = info.last_irreversible_block_num - 3
+  const blockInfo = await activeUser.rpc.get_block(height)
+  const timePlus = new Date().getTime() + (60 * 1000)
+  const timeInISOString = (new Date(timePlus)).toISOString()
+  const expiration = timeInISOString.substr(0, timeInISOString.length - 1)
+  return {
+    actions,
+    context_free_actions: [],
+    transaction_extensions: [],
+    expiration,
+    ref_block_num: blockInfo.block_num & 0xffff,
+    ref_block_prefix: blockInfo.ref_block_prefix,
+    max_cpu_usage_ms: 0,
+    max_net_usage_words: 0,
+    delay_sec: 0,
   }
 }
 
@@ -114,7 +159,7 @@ const getTransactionAmount = (chainId) => {
   switch (chainId) {
     case '0db13ab9b321c37c0ba8481cb4681c2788b622c3abfd1f12f0e5353d44ba6e72': {
       symbol = 'TNT'
-      break;
+      break
     }
     case 'f11d5128e07177823924a07df63bf59fbd07e52c44bc77d16acc1c6e9d22d37b': {
       symbol = 'LNX'
@@ -158,10 +203,13 @@ class TestApp extends Component {
   purchase = async () => {
     const { ual: { activeUser } } = this.props
     try {
-      const { accountName, chain, requestPermission } = activeUser
-      const { chainId } = chain
-      const demoTransaction = getTransaction(accountName, requestPermission, chainId)
-      const result = await activeUser.signTransaction(demoTransaction, { expireSeconds: 120, blocksBehind: 3 })
+      const { accountName, chainId } = activeUser
+      let { requestPermission } = activeUser
+      if (!requestPermission && activeUser.scatter) {
+        requestPermission = activeUser.scatter.identity.accounts[0].authority
+      }
+      const demoActions = getActions(accountName, requestPermission, chainId)
+      const result = await activeUser.signTransaction(demoActions, { expireSeconds: 120, blocksBehind: 3 })
       this.setState({
         message: `Transfer Successful!`,
       }, () => {
@@ -224,9 +272,9 @@ class TestApp extends Component {
 class UALWrapper extends Component {
   constructor(props) {
     super(props)
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    const chainId = params.get('chain');
+    const search = window.location.search
+    const params = new URLSearchParams(search)
+    const chainId = params.get('chain')
     this.state = {
       chainId: chainId || chains[0].chainId
     }
@@ -244,6 +292,8 @@ class UALWrapper extends Component {
     const anchor = new Anchor([chain], {
       // Required: The name of the app requesting a session
       appName: 'ual-anchor-demo',
+      // Optional: define your own endpoint or eosjs JsonRpc client
+      // rpc: new JsonRpc('https://jungle.greymass.com'),
       // Optional: define API for session management, defaults to cb.anchor.link
       service: 'https://cb.anchor.link'
     })
